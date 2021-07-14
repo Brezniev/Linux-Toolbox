@@ -1,0 +1,48 @@
+#!/bin/bash
+
+help()
+{
+echo "Ta komenda sluzy do zliczania ilosci okreslonych znakow w plikach"
+echo "wpisanie komendy bez zmiennej wylicza w tekscie wszystkie znaki (bez EOF)" 
+echo "Posiada ona 3 parametry:"
+echo "-o  liczy same symbole bez spacji,oraz bez EOF"
+echo "-l wylicza linie z pliku"
+echo "-s wylicza spacje z tekstu"
+echo "-h  pokazuje menu pomocy dla tej komendy"
+}
+other()
+{
+echo -n "Sciezka do pliku:"
+/etc/Toolkit/licz/code.licz.sh |head -n 1
+}
+lines()
+{
+echo -n "Sciezka do pliku:"
+/etc/Toolkit/licz/code.licz.sh |sed -n  '2p'
+}
+spaces()
+{
+echo -n "Sciezka do pliku:"
+/etc/Toolkit/licz/code.licz.sh |sed -n '3p'
+}
+
+while getopts ":hols" option; do
+case $option in
+	h)help
+	exit;;
+	o)other
+	exit;;
+	l)lines
+	exit;;
+	s)spaces
+	exit;;
+	\?) echo "Blad, taka opcja nie istnieje!"
+	    echo "Sprawdz dostepne opcje w panelu pomocy (komenda -h)"
+	exit;;
+esac
+done
+
+
+
+echo -n "Sciezka do pliku:"
+/etc/Toolkit/licz/code.licz.sh |tail -n 1
