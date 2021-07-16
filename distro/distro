@@ -1,0 +1,36 @@
+if [ -e /etc/debian_version ]
+then PKG=apt;
+elif [ -e /etc/arch-release ]
+then PKG=pacman;
+elif [ -e /etc/redhat-release ]
+then PKG=yum;
+elif [ -e /etc/gentoo-release ]
+then PKG=emerge;
+elif [ -e /etc/SuSE-release ]
+then PKG=zypper;
+elif [ -e /etc/centos-release ]
+then PKG=rpm;
+elif [ -e /etc/fedora-release ]
+then PKG=dnf;
+elif [ -e /etc/solus-release ]
+then PKG=eopkg;
+fi
+
+
+
+echo "___BASIC_INFORMATION___"
+echo 	"Hostname-     "`hostname`
+echo -e "Uptime-       "`uptime -p` "\n" "\n"
+
+
+echo "___DISTRO-INFO___"
+echo "Kernel-          "  `uname -r`
+echo "Distribution-    "  `cat /etc/*[_-][rv]e[lr]* |awk '/PRETTY_NAME/' |sed 's/"//g' |sed 's/PRETTY_NAME=//g'`
+echo "Codename-        "  `cat /etc/*[_-][rv]e[lr]* |awk '/VERSION_CODENAME=/' |sed 's/VERSION_CODENAME=//g'`
+echo "Architecture-    "  `uname -p`
+echo "DE-	         "   $DESKTOP_SESSION
+echo "Def_PKG_Manager- "  "$PKG"
+cat /etc/*[_-][rv]e[lr]* | awk '/ID_LIKE/'|sed 's/ID_LIKE=/Distro_Based_On-  /g'
+
+
+

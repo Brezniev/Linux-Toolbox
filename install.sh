@@ -1,3 +1,5 @@
+#!/bin/bash
+
 inst()
 {
 if [ -e "/etc/Toolkit/" ]; then
@@ -11,17 +13,25 @@ fi
 
 
 
+
 pakiety()
 {
+#licz
 echo "Instalowanie..."
 sudo mkdir /etc/Toolkit/licz
 sudo mv licz/code.licz.sh /etc/Toolkit/licz/code.licz.sh
-
 if [ -e /usr/bin ]; then
+#licz
 sudo mv licz/licz /usr/bin/licz
+#distro
+sudo mv distro/distro /usr/bin/distro
 else
+#licz
 sudo mv licz/licz /bin/licz
+#distro
+sudo mv distro/distro /bin/distro
 fi
+
 }
 
 
@@ -58,6 +68,7 @@ clear
 echo "Komendy:"
 echo "-----------"
 echo "1.licz"
+echo "2.distro"
 echo "-----------"
 elif [ $odpowiedz -eq 3 ];
 then

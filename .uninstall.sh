@@ -1,11 +1,18 @@
-licz()
+#!/bin/bash
+
+pakiety()
 {
 if [ -e /usr/bin/licz ]
 then
+#licz
 rm -f /usr/bin/licz
+#distro
+rm -f /usr/bin/distro
 else
+#licz
 rm -f /bin/licz
-
+#distro
+rm -f /bin/distro
 fi
 }
 
